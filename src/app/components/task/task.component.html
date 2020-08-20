@@ -1,0 +1,30 @@
+<ion-list>
+  <ion-reorder-group (ionItemReorder)="reorderItems($event)" disabled="false">
+    <ion-item *ngFor="let task of tasks; index as i">
+      <ion-card style="width: 100%;">
+        <div [ngClass]="{ completed: task.completed }">
+          <ion-card-header>
+            <ion-chip color="{{ task.color }}">
+              <ion-label>{{ task.priority }}</ion-label>
+            </ion-chip>
+            <ion-card-subtitle> {{ task.date | date}} </ion-card-subtitle>
+            <ion-card-title>{{ task.title }}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            {{ task.description }}
+          </ion-card-content>
+
+          <ion-button
+            [disabled]="task.completed"
+            color="primary"
+            (click)="completeTask(i)"
+            >Complete</ion-button
+          >
+          <ion-button color="danger" (click)="delete(i)">Delete</ion-button>
+        </div>
+      </ion-card>
+
+      <ion-reorder slot="end"></ion-reorder>
+    </ion-item>
+  </ion-reorder-group>
+</ion-list>

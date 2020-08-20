@@ -1,0 +1,57 @@
+<ion-content [fullscreen]="true" class="container-fluid">
+  <div class="row">
+    <div class="col">
+      <ion-text color="primary" class="ion-text-center">
+        <h1>TODO</h1>
+      </ion-text>
+    </div>
+    <ion-header collapse="condense" class="col">
+      <ion-toolbar>
+        <ion-title size="large">TODO</ion-title>
+      </ion-toolbar>
+    </ion-header>
+  </div>
+  <div class="row">
+    <form
+      [formGroup]="todo"
+      (ngSubmit)="add()"
+      class="col"
+      style="margin: 25px;"
+    >
+      <ion-item>
+        <ion-label>Title</ion-label>
+        <ion-input type="text" formControlName="title"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Description</ion-label>
+        <ion-input type="text" formControlName="description"></ion-input>
+      </ion-item>
+      <IonItem>
+        <ion-item>
+          <ion-label>Priority</ion-label>
+
+          <ion-select placeholder="Priority" formControlName="priority">
+            
+
+              <ion-select-option value="High" style="color: red;"
+              >High</ion-select-option
+              >
+              <ion-select-option value="Mid" style="color: orange;"
+              >Mid</ion-select-option
+              >
+              <ion-select-option value="Low" style="color: green;"
+              >Low</ion-select-option
+              >
+          
+          </ion-select>
+        </ion-item>
+      </IonItem>
+
+      <ion-button color="primary" type="submit" [disabled]="!todo.valid">
+        Add
+      </ion-button>
+    </form>
+  </div>
+
+  <app-task></app-task>
+</ion-content>
